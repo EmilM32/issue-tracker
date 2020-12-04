@@ -11,7 +11,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
 import { AppNotification } from "@/store/main/state";
 import { commitRemoveNotification } from "@/store/main/mutations";
 import { readFirstNotification } from "@/store/main/getters";
@@ -19,15 +19,13 @@ import { dispatchRemoveNotification } from "@/store/main/actions";
 
 @Component
 export default class BaseSnackbar extends Vue {
-  public show: boolean = false;
-  public text: string = "";
+  public show = false;
+  public text = "";
   public currentNotification: AppNotification | false = false;
 
   public async hide() {
     this.show = false;
-    await new Promise<void>((resolve, reject) =>
-      setTimeout(() => resolve(), 500)
-    );
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 500));
   }
 
   public async close() {
@@ -58,10 +56,7 @@ export default class BaseSnackbar extends Vue {
   }
 
   @Watch("firstNotification")
-  public async onNotificationChange(
-    newNotification: AppNotification | false,
-    oldNotification: AppNotification | false
-  ) {
+  public async onNotificationChange(newNotification: AppNotification | false) {
     if (newNotification !== this.currentNotification) {
       await this.setNotification(newNotification);
       if (newNotification) {

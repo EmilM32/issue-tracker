@@ -4,6 +4,7 @@
       <v-col style="margin: 1rem 0">
         <span class="title font-weight-regular">
           {{ $tc("projects.title", 2) | capitalize }}
+          lalala
         </span>
       </v-col>
       <v-col cols="3">

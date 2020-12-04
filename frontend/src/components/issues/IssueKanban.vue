@@ -80,15 +80,11 @@ export default class IssueKanban extends Vue {
     switch (currentStatus) {
       case IssueStatus.TODO:
         return IssueStatus.IN_PROGRESS;
-        break;
       case IssueStatus.IN_PROGRESS:
         return IssueStatus.DONE;
-        break;
       case IssueStatus.DONE:
         return false;
-        break;
       default:
-        console.warn(`unknown status ${currentStatus}`);
         return false;
     }
   }
@@ -102,7 +98,7 @@ export default class IssueKanban extends Vue {
       });
     }
     const orderMap = { TODO: 1, IN_PROGRESS: 2, DONE: 3 };
-    this.availableStatuses.sort(function(x, y) {
+    this.availableStatuses.sort(function (x, y) {
       return orderMap[x] - orderMap[y];
     });
   }
