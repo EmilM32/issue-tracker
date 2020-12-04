@@ -1,0 +1,55 @@
+{
+  "common": {
+    "description": "Opis",
+    "search": "Szukaj"
+  },
+  "projects": {
+    "title": "projekt | projekty",
+    "projId": "Klucz projektu",
+    "name": "Nazwa",
+    "create": "utwórz projekt",
+    "update": "aktualizuj projekt",
+    "delete": "usuń projekt",
+    "deleteConfirmMsg": "Czy na pewno chcesz usunąć projekt {key}? Nie będzie możliwe cofnięcie tej operacji."
+  },
+  "issues": {
+    "title": "zgłoszenie | zgłoszenia",
+    "statuses": {
+      "TODO": "do zrobienia",
+      "IN_PROGRESS": "w toku",
+      "DONE": "gotowe"
+    },
+    "create": "utwórz zgłoszenie",
+    "summary": "Podsumowanie",
+    "relations": "Połączone zgłoszenia"
+  },
+  "table": {
+    "loadingText": "Ładowanie danych...",
+    "noDataText": "Brak danych do wyświetlenia",
+    "noResultsText": "Nie znaleziono danych"
+  },
+  "rules": {
+    "required": "pole jest wymagane",
+    "tooLong": "wartość za długa"
+  },
+  "dates": {
+    "createdAt": "data utworzenia",
+    "modifiedAt": "ostatnio modyfikowany"
+  },
+  "snackbar": {
+    "error": {
+      "projIdUnique": "Klucz projektu nie jest unikalny",
+      "formValid": "Uzupełnij prawidłowo wszystkie pola",
+      "blunder": "Coś poszło nie tak"
+    },
+    "success": {
+      "deleteProject": "Usunięto projekt",
+      "createProject": "Utworzono projekt",
+      "updateProject": "Zaktualizowano projekt",
+      "createIssue": "Utworzono zgłoszenie",
+      "deleteIssue": "Usunięto zgłoszenie",
+      "updateIssue": "Zaktualizowano zgłoszenie",
+      "deleteIssueRelation": "Usunięto powiązanie zgłoszenia"
+    }
+  }
+}

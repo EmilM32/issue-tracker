@@ -1,61 +1,34 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+  <v-app class="background">
+    <v-app-bar app color="appBar" dense>
+      <v-icon>mdi-jira</v-icon>
+      <span class="title pl-5">{{ $appName }}</span>
+      <v-spacer />
+      <lang-switcher />
+      <theme-switcher />
     </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
+    <v-main class="ma-5">
+      <router-view />
+      <base-snackbar />
     </v-main>
   </v-app>
 </template>
-
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from "vue-property-decorator";
+import ThemeSwitcher from "@/components/common/ThemeSwitcher.vue";
+import LangSwitcher from "@/components/common/LangSwitcher.vue";
+import BaseSnackbar from "@/components/common/BaseSnackbar.vue";
 
-export default Vue.extend({
-  name: 'App',
-
+@Component({
   components: {
-    HelloWorld,
+    LangSwitcher,
+    ThemeSwitcher,
+    BaseSnackbar,
   },
-
-  data: () => ({
-    //
-  }),
-});
+})
+export default class App extends Vue {}
 </script>
+<style lang="sass" scoped>
+.background
+  background-color: var(--v-background-base)!important
+</style>

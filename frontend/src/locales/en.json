@@ -1,3 +1,55 @@
 {
-  "message": "hello i18n !!"
+  "common": {
+    "description": "Description",
+    "search": "Search"
+  },
+  "projects": {
+    "title": "project | projects",
+    "projId": "Project key",
+    "name": "Name",
+    "create": "create project",
+    "update": "update project",
+    "delete": "delete project",
+    "deleteConfirmMsg": "Are you sure you want to delete project {key}? It will not be possible to undo this operation."
+  },
+  "issues": {
+    "title": "issue | issues",
+    "statuses": {
+      "TODO": "todo",
+      "IN_PROGRESS": "in progress",
+      "DONE": "done"
+    },
+    "create": "create issue",
+    "summary": "Summary",
+    "relations": "Issue relations"
+  },
+  "table": {
+    "loadingText": "Loading items...",
+    "noDataText": "No data to show",
+    "noResultsText": "No result to show"
+  },
+  "rules": {
+    "required": "field is required",
+    "tooLong": "value too long"
+  },
+  "dates": {
+    "createdAt": "created at",
+    "modifiedAt": "modified at"
+  },
+  "snackbar": {
+    "error": {
+      "projIdUnique": "Project key is not unique",
+      "formValid": "Complete all fields correctly",
+      "blunder": "Something went wrong"
+    },
+    "success": {
+      "deleteProject": "Deleted project successfully",
+      "createProject": "Created project successfully",
+      "updateProject": "Updated project successfully",
+      "createIssue": "Created issue successfully",
+      "deleteIssue": "Deleted issue successfully",
+      "updateIssue": "Updated issue successfully",
+      "deleteIssueRelation": "Deleted issue relation successfully"
+    }
+  }
 }
