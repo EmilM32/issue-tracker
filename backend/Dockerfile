@@ -1,10 +1,16 @@
 FROM python:3.7
 
-RUN pip install fastapi uvicorn
+WORKDIR /app
 
-EXPOSE 8000
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python && \
+    cd /usr/local/bin && \
+    ln -s /opt/poetry/bin/poetry && \
+    poetry config virtualenvs.create false
 
-COPY backend/ .
-# COPY ./app /app
+COPY app/pyproject.toml app/poetry.lock* ./
+
+RUN poetry install
+
+COPY ./app /app
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

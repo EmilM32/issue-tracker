@@ -1,12 +1,9 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
-// import { apiUrl } from '@/env';
 import { camelizeKeys, decamelizeKeys } from 'humps';
 import { Issue, Project } from '@/interfaces';
-const apiUrl = `http://${process.env.VUE_APP_DOMAIN}`;
 
-axios.create({
-  baseURL: apiUrl,
-});
+const apiUrl = `http://${process.env.VUE_APP_DOMAIN}`;
+axios.defaults.baseURL = apiUrl;
 
 // Axios middleware to convert all api responses to camelCase
 axios.interceptors.response.use((response: AxiosResponse) => {
@@ -38,7 +35,7 @@ export const api = {
   // api for projects start
   async readProjects(): Promise<Array<Project>> {
     return axios
-      .get(`/projects/`)
+      .get(`/api/projects/`)
       .then(({ data }) => {
         data.map((el: Project) => {
           if (el.createdAt && el.modifiedAt) {
@@ -58,9 +55,7 @@ export const api = {
     isCreatedAt: boolean
   ): Promise<Array<Project>> {
     return axios
-      .get(
-        `/api/projects/sorted/?is_asc=${isAsc}&is_created_at=${isCreatedAt}`
-      )
+      .get(`/api/projects/sorted/?is_asc=${isAsc}&is_created_at=${isCreatedAt}`)
       .then(({ data }) => {
         data.map((el: Project) => {
           if (el.createdAt && el.modifiedAt) {
