@@ -23,10 +23,7 @@
 </template>
 
 <script lang="ts">
-import { SnackbarTypes } from "@/enums";
 import { Project } from "@/interfaces";
-import { dispatchAddNotification } from "@/store/main/actions";
-import { AppNotification } from "@/store/main/state";
 import { dispatchDeleteProject } from "@/store/projects/actions";
 import { Component, Vue, Model, Prop } from "vue-property-decorator";
 
@@ -37,11 +34,6 @@ export default class ConfirmDelete extends Vue {
 
   mounted() {
     if (!this.selectedProject?.id) {
-      const snackbar: AppNotification = {
-        content: "snackbar.error.blunder",
-        color: SnackbarTypes.ERROR,
-      };
-      dispatchAddNotification(this.$store, snackbar);
       this.$emit("input", false);
     }
   }

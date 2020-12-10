@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
 
-import { mainModule } from './main';
 import { State } from './state';
 import { projectsModule } from './projects';
 import { issuesModule } from './issues';
@@ -12,7 +11,6 @@ const storeOptions: StoreOptions<State> = {
   modules: {
     projects: projectsModule,
     issues: issuesModule,
-    main: mainModule,
   },
 };
 

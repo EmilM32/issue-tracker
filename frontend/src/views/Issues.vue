@@ -42,12 +42,10 @@
 </template>
 
 <script lang="ts">
-import { IssueStatus, SnackbarTypes } from "@/enums";
+import { IssueStatus } from "@/enums";
 import { Issue, Project } from "@/interfaces";
 import { dispatchReadIssues } from "@/store/issues/actions";
 import { readIssues } from "@/store/issues/getters";
-import { dispatchAddNotification } from "@/store/main/actions";
-import { AppNotification } from "@/store/main/state";
 import { Component, Vue } from "vue-property-decorator";
 import IssueKanban from "@/components/issues/IssueKanban.vue";
 import IssueDetails from "@/components/issues/IssueDetails.vue";
@@ -78,11 +76,6 @@ export default class Issues extends Vue {
     if (this.selectedProject?.id) {
       dispatchReadIssues(this.$store, this.selectedProject.id);
     } else {
-      const snackbar: AppNotification = {
-        content: "snackbar.error.blunder",
-        color: SnackbarTypes.ERROR,
-      };
-      dispatchAddNotification(this.$store, snackbar);
       this.$router.go(-1);
     }
   }

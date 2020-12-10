@@ -11,8 +11,6 @@ import {
   commitSelectProject,
 } from './mutations';
 import { Project } from '@/interfaces';
-import { commitAddNotification } from '../main/mutations';
-import { SnackbarTypes } from '@/enums';
 
 type MainContext = ActionContext<ProjectsState, State>;
 
@@ -21,11 +19,6 @@ export const actions = {
     const response = await api.readProjects();
     if (response) {
       commitReadProjects(context, response);
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -39,11 +32,6 @@ export const actions = {
     );
     if (response) {
       commitReadProjects(context, response);
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -51,20 +39,6 @@ export const actions = {
     const response = await api.createProject(newProject);
     if (response && typeof response !== 'number') {
       commitCreateProject(context, response);
-      commitAddNotification(context, {
-        content: 'snackbar.success.createProject',
-        color: SnackbarTypes.SUCCESS,
-      });
-    } else if (response === 400) {
-      commitAddNotification(context, {
-        content: 'snackbar.error.projIdUnique',
-        color: SnackbarTypes.ERROR,
-      });
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -72,15 +46,6 @@ export const actions = {
     const response = await api.deleteProject(projId);
     if (response) {
       commitDeleteProject(context, response);
-      commitAddNotification(context, {
-        content: 'snackbar.success.deleteProject',
-        color: SnackbarTypes.SUCCESS,
-      });
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -88,15 +53,6 @@ export const actions = {
     const response = await api.updateProject(updatedProject);
     if (response) {
       commitUpdateProject(context, response);
-      commitAddNotification(context, {
-        content: 'snackbar.success.updateProject',
-        color: SnackbarTypes.SUCCESS,
-      });
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 

@@ -91,15 +91,13 @@
 </template>
 
 <script lang="ts">
-import { IssueStatus, SnackbarTypes } from "@/enums";
+import { IssueStatus } from "@/enums";
 import { Issue, Project } from "@/interfaces";
 import {
   dispatchCreateIssues,
   dispatchDeleteIssues,
   dispatchUpdateIssue,
 } from "@/store/issues/actions";
-import { dispatchAddNotification } from "@/store/main/actions";
-import { AppNotification } from "@/store/main/state";
 import { getSelectedProject } from "@/store/projects/getters";
 import { VForm } from "@/types";
 import { TranslateResult } from "vue-i18n";
@@ -174,12 +172,6 @@ export default class IssueDetails extends Vue {
       }
       this.issueForm.resetValidation();
       this.$emit("input", false);
-    } else {
-      const snackbar: AppNotification = {
-        content: "snackbar.error.formValid",
-        color: SnackbarTypes.ERROR,
-      };
-      dispatchAddNotification(this.$store, snackbar);
     }
   }
 }

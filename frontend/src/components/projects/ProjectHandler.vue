@@ -67,9 +67,6 @@ import {
 } from "@/store/projects/actions";
 import { TranslateResult } from "vue-i18n";
 import { VForm } from "@/types";
-import { dispatchAddNotification } from "@/store/main/actions";
-import { SnackbarTypes } from "@/enums";
-import { AppNotification } from "@/store/main/state";
 
 @Component
 export default class ProjectHandler extends Vue {
@@ -120,12 +117,6 @@ export default class ProjectHandler extends Vue {
       }
       this.currentProjectForm.resetValidation();
       this.$emit("input", false);
-    } else {
-      const snackbar: AppNotification = {
-        content: "snackbar.error.formValid",
-        color: SnackbarTypes.ERROR,
-      };
-      dispatchAddNotification(this.$store, snackbar);
     }
   }
 }

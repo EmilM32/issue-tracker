@@ -9,7 +9,6 @@
     </v-app-bar>
     <v-main class="ma-5">
       <router-view />
-      <base-snackbar />
     </v-main>
   </v-app>
 </template>
@@ -17,13 +16,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import ThemeSwitcher from "@/components/common/ThemeSwitcher.vue";
 import LangSwitcher from "@/components/common/LangSwitcher.vue";
-import BaseSnackbar from "@/components/common/BaseSnackbar.vue";
 
 @Component({
   components: {
     LangSwitcher,
     ThemeSwitcher,
-    BaseSnackbar,
   },
 })
 export default class App extends Vue {}

@@ -8,12 +8,8 @@ import {
   commitCreateIssue,
   commitDeleteIssue,
   commitUpdateIssue,
-  // commitDeleteIssueRelation,
-  // commitCreateIssueRelation,
 } from './mutations';
 import { Issue } from '@/interfaces';
-import { commitAddNotification } from '../main/mutations';
-import { SnackbarTypes } from '@/enums';
 
 type MainContext = ActionContext<IssuesState, State>;
 
@@ -22,11 +18,6 @@ export const actions = {
     const response = await api.readIssues(projectId);
     if (response) {
       commitReadIssues(context, response);
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -34,15 +25,6 @@ export const actions = {
     const response = await api.createIssue(newIssue);
     if (response) {
       commitCreateIssue(context, response);
-      commitAddNotification(context, {
-        content: 'snackbar.success.createIssue',
-        color: SnackbarTypes.SUCCESS,
-      });
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -50,15 +32,6 @@ export const actions = {
     const response = await api.deleteIssue(issueId);
     if (response) {
       commitDeleteIssue(context, response);
-      commitAddNotification(context, {
-        content: 'snackbar.success.deleteIssue',
-        color: SnackbarTypes.SUCCESS,
-      });
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 
@@ -66,11 +39,6 @@ export const actions = {
     const response = await api.updateIssue(updatedIssue);
     if (response) {
       commitUpdateIssue(context, response);
-    } else {
-      commitAddNotification(context, {
-        content: 'snackbar.error.blunder',
-        color: SnackbarTypes.ERROR,
-      });
     }
   },
 };
